@@ -15,6 +15,7 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+SECURE_REFERRER_POLICY = 'same-origin'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -128,3 +129,11 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost",
+    "https://localhost",  # HTTPS로 사용하는 경우도 고려합니다.
+    # 추가적으로 필요한 출처를 여기에 추가할 수 있습니다.
+    "http://127.0.0.1",
+    "https://127.0.0.1",
+]
