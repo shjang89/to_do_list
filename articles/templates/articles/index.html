@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+  <h3 class="tdl">To Do list</h3>
+
+  <table class="table">
+    <thead>
+      <tr class="table-secondary">
+        <th scope="col">글 번호<span style="display:inline-block; width:20px;"></span></th>
+        <th scope="col">글 제목<span style="display:inline-block; width:150px;"></span></th>
+        <th scope="col">글 내용<span style="display:inline-block; width:300px;"></span></th>
+        <th scope="col">Action<span style="display:inline-block; width:200px;"></span></th>
+      </tr>
+    </thead>
+    <tbody class="table-group-divider">
+      {% for article in  articles%}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            
+              <td><a href="{% url "articles:detail" article.pk %}">{{article.title|slice:":10"}}</a></td>
+            
+            <td>{{article.content|slice:":10"}}</td>
+            <td>
+              <a type="button" class="btn btn-outline-warning" href="{%url 'articles:update' article.pk%}">Update</a>
+              <a type="button" class="btn btn-outline-danger" href="{%url 'articles:delete' article.pk%}">Delete</a>
+            </td>  
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <a type="button" class="btn btn-outline-success" href="{%url 'articles:create' %}">Create</a>
+
+
+
+{% endblock content %}
+
+
